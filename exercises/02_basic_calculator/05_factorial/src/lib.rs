@@ -11,11 +11,11 @@
 // Use only what you learned! No loops yet, so you'll have to use recursion!
 
 fn factorial(n: i32) -> i32 {
-    let mut acc = 1;
-    for el in 1..=n {
-        acc *= el;
+    if n == 0 {
+        1
+    } else {
+        n * factorial(n - 1)
     }
-    acc
 }
 
 #[cfg(test)]
