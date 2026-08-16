@@ -10,6 +10,15 @@ struct Order {
     quantity: u16,
 }
 
+impl Order {
+    fn is_available(&self) -> bool {
+    if self.quantity > 1 {
+       return true;
+    }
+    false
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
