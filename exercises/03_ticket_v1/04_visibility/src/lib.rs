@@ -1,12 +1,12 @@
 mod ticket {
-    struct Ticket {
+    pub struct Ticket {
         title: String,
         description: String,
         status: String,
     }
 
     impl Ticket {
-        fn new(title: String, description: String, status: String) -> Ticket {
+        pub fn new(title: String, description: String, status: String) -> Ticket {
             if title.is_empty() {
                 panic!("Title cannot be empty");
             }
@@ -21,6 +21,11 @@ mod ticket {
             }
             if status != "To-Do" && status != "In Progress" && status != "Done" {
                 panic!("Only `To-Do`, `In Progress`, and `Done` statuses are allowed");
+            }
+
+            pub fn description(mut self, description: String) {
+                self.description = description;
+                
             }
 
             Ticket {
