@@ -11,3 +11,72 @@
 // Integration here has a very specific meaning: they test **the public API** of your project.
 // You'll need to pay attention to the visibility of your types and methods; integration
 // tests can't access private or `pub(crate)` items.
+
+pub mod outro_02 {
+    pub struct Order{
+        product_name: String,
+        quantity: u32,
+        unit_price: u32
+    } 
+
+    impl Order {
+        fn check_control_name(product_name: &String) {
+            if product_name.is_empty() {
+                panic!("The product name can't be empty");
+            }
+            if product_name.len() > 300 {
+                panic!("The product name can't be longer than 300 bytes");
+                
+            }
+        }
+        fn check_quantity(quantity: &u32) {
+            if quantity <= &0 {
+                panic!("quantity must be strictly greater than zero");
+            }
+        }
+        fn check_unit_price(price: &u32) {
+            if price <= &0 {
+                panic!("unit price must be strictly greater than zero");
+            }
+        }
+        pub fn new(product_name:String, quantity: u32, unit_price: u32) -> Order {
+            Order::check_control_name(&product_name);
+            Order::check_quantity(&quantity);
+            Order::check_unit_price(&unit_price);
+            Order {
+                product_name,
+                quantity, 
+                unit_price
+            }
+        }
+
+        pub fn product_name(&self) -> &String {
+            &self.product_name
+        }
+        pub fn set_product_name(&mut self, p: String) {
+            Order::check_control_name(&p);
+            self.product_name = p
+        }
+        pub fn quantity(&self) -> &u32 {
+            &self.quantity
+        }
+        pub fn set_quantity(&mut self, q: u32) {
+            Order::check_quantity(&q);
+            self.quantity = q
+        }
+        pub fn unit_price(&self) -> &u32 {
+            &self.unit_price
+        }
+        pub fn set_unit_price(&mut self, p: u32) {
+            Order::check_unit_price(&p);
+            self.quantity = p
+        }
+        pub fn total(&self) -> u32 {
+            &self.unit_price * &self.quantity
+        }
+
+
+    }
+}
+
+pub use outro_02::Order;
