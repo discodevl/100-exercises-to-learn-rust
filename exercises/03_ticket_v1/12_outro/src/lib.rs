@@ -69,7 +69,7 @@ pub mod outro_02 {
         }
         pub fn set_unit_price(&mut self, p: u32) {
             Order::check_unit_price(&p);
-            self.quantity = p
+            self.unit_price = p
         }
         pub fn total(&self) -> u32 {
             &self.unit_price * &self.quantity
