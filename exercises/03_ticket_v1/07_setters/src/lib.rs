@@ -82,6 +82,7 @@ impl Ticket {
         Self::check_valid_status(&status);
         self.status = status;
     }
+    
 }
 
 #[cfg(test)]
